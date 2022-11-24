@@ -3,8 +3,8 @@ import { Container, TextField, Typography } from "@mui/material";
 
 export const DeliveryAddress = () => {
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h4">Delivery Address</Typography>
+    <Container maxWidth="sm" sx={{ mb: 4 }}>
+      <Typography variant="h5">Delivery Address</Typography>
       <TextField
         label="Address Line One"
         variant="outlined"

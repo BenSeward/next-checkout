@@ -1,27 +1,35 @@
 import React from "react";
 import { Container, TextField, Typography } from "@mui/material";
+import { useNotificationStore } from "../../stores/personalDetails";
 
 export const PersonalDetails = () => {
+  const { updatePersonalDetails } = useNotificationStore();
+
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h4">Personal Details</Typography>
+    <Container maxWidth="sm" sx={{ mb: 4 }}>
+      <Typography variant="h5">Personal Details</Typography>
       <TextField
         label="First name"
         variant="outlined"
         margin="dense"
         fullWidth
+        onChange={(e) => updatePersonalDetails({ firstName: e.target.value })}
       />
       <TextField
         label="Last name"
         variant="outlined"
         margin="dense"
         fullWidth
+        onChange={(e) => updatePersonalDetails({ lastName: e.target.value })}
       />
       <TextField
         label="Email Address"
         variant="outlined"
         margin="dense"
         fullWidth
+        onChange={(e) =>
+          updatePersonalDetails({ emailAddress: e.target.value })
+        }
       />
     </Container>
   );

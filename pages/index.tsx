@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import { DeliveryAddress } from "../src/components/DeliveryAddress/DeliveryAddress";
-import { PersonalDetails } from "../src/components/PersonalDetails/PersonalDetails";
+import { DeliveryAddress } from "../src/features/DeliveryAddress/DeliveryAddress";
+import { PersonalDetails } from "../src/features/PersonalDetails/PersonalDetails";
 
 export default function Home() {
   return (
