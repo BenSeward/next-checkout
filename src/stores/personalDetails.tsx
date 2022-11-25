@@ -11,17 +11,17 @@ type PersonalDetailsStore = {
   updatePersonalDetails: (personalDetail: Partial<PersonalDetails>) => void;
 };
 
-export const useNotificationStore = create<PersonalDetailsStore>((set) => ({
+export const usePersonalDetailsStore = create<PersonalDetailsStore>((set) => ({
   personalDetails: {
     firstName: "",
     lastName: "",
     emailAddress: "",
   },
-  updatePersonalDetails: (notification) =>
+  updatePersonalDetails: (update) =>
     set((state) => ({
       personalDetails: {
         ...state.personalDetails,
-        ...notification,
+        ...update,
       },
     })),
 }));

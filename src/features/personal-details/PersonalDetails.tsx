@@ -1,9 +1,8 @@
-import React from "react";
 import { Container, TextField, Typography } from "@mui/material";
-import { useNotificationStore } from "src/stores/personalDetails";
+import { usePersonalDetailsStore } from "src/stores/personalDetails";
 
 export const PersonalDetails = () => {
-  const { updatePersonalDetails } = useNotificationStore();
+  const { updatePersonalDetails } = usePersonalDetailsStore();
 
   return (
     <Container maxWidth="sm" sx={{ mb: 4 }}>
