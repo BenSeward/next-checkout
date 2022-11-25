@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, TextField, Typography } from "@mui/material";
-import { useNotificationStore } from "../../stores/personalDetails";
+import { useNotificationStore } from "src/stores/personalDetails";
 
 export const PersonalDetails = () => {
   const { updatePersonalDetails } = useNotificationStore();
