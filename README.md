@@ -8,6 +8,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet luctus nibh
 
 ## Table of Contents
 
+- [💻 Application Overview](./docs/application-overview.md)
 - [⚙️ Project Configuration](./docs/project-configuration.md)
 - [📕 Getting Started](./docs/getting-started.md)
 - [🗃 State Management](./docs/state-management.md)
