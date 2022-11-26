@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { CartItems } from "src/features/cart-items/CartItems";
-import { DeliveryAddress } from "src/features/delivery-address/DeliveryAddress";
 import { PersonalDetails } from "src/features/personal-details/PersonalDetails";
 
 export default function Home(props: any) {
@@ -15,7 +14,6 @@ export default function Home(props: any) {
       <main>
         <CartItems />
         <PersonalDetails />
-        <DeliveryAddress />
       </main>
     </div>
   );
