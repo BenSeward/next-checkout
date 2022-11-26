@@ -17,11 +17,12 @@ export const usePersonalDetailsStore = create<PersonalDetailsStore>((set) => ({
     lastName: "",
     emailAddress: "",
   },
-  updatePersonalDetails: (update) =>
+  updatePersonalDetails: (update) => {
     set((state) => ({
       personalDetails: {
         ...state.personalDetails,
         ...update,
       },
-    })),
+    }));
+  },
 }));

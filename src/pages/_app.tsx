@@ -1,5 +1,9 @@
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import { useCartStore } from "src/stores/cartItems";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const { initializeStore } = useCartStore();
+  initializeStore(pageProps.initializeStore);
+
+  return <Component {...pageProps} />;
 }
