@@ -1,6 +1,7 @@
 import create from "zustand";
 
 type CartItem = {
+  id: number;
   title: string;
   qty: number;
   price: number;
@@ -16,6 +17,7 @@ type CartStore = {
   initializeStore: (update: Partial<CartStore>) => void;
   cartItems: Array<CartItem>;
   setCartItems: (items: Array<CartItem>) => void;
+  removeCartItem: (id: number) => void;
   personalDetails: PersonalDetails;
   updatePersonalDetails: (personalDetail: Partial<PersonalDetails>) => void;
 };
@@ -29,8 +31,12 @@ export const useStore = create<CartStore>((set) => ({
   },
   setCartItems: (update) => {
     set((state) => ({
-      isLoading: false,
       cartItems: [...state.cartItems, ...update],
+    }));
+  },
+  removeCartItem: (id) => {
+    set((state) => ({
+      cartItems: state.cartItems.filter((item) => item.id !== id),
     }));
   },
   initializeStore: (update) => {

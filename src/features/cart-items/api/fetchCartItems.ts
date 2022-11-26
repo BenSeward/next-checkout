@@ -4,6 +4,7 @@ export const fetchCartItems = async () => {
   ).then((res) => res.json());
 
   const mapResponse = response.map((cartItem: any) => ({
+    id: cartItem.id,
     price: cartItem.price,
     title: cartItem.title,
     qty: 3,
