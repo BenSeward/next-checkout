@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { CartItems } from "src/features/cart-items/CartItems";
+import { fetchCartItems } from "src/features/cart-items/api/fetchCartItems";
+import { CartItems } from "src/features/cart-items/components/CartItems";
 import { PersonalDetails } from "src/features/personal-details/PersonalDetails";
 
 export default function Home(props: any) {
@@ -20,20 +21,10 @@ export default function Home(props: any) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch(
-    "https://fakestoreapi.com/products?limit=3"
-  ).then((res) => res.json());
-
-  const mapResponse = response.map((cartItem: any) => ({
-    price: cartItem.price,
-    title: cartItem.title,
-    qty: 3,
-  }));
-
   return {
     props: {
       initializeStore: {
-        cartItems: mapResponse,
+        cartItems: await fetchCartItems(),
       },
     },
   };
