@@ -1,5 +1,4 @@
 import { Box, Button, Container, Typography } from "@mui/material";
-import { fetchCartItems } from "src/features/cart-items/api/fetchCartItems";
 import { useStore } from "src/store";
 
 export const CartItems = () => {
