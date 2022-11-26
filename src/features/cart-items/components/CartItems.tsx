@@ -3,7 +3,7 @@ import { fetchCartItems } from "src/features/cart-items/api/fetchCartItems";
 import { useStore } from "src/store";
 
 export const CartItems = () => {
-  const { cartItems, removeCartItem, initializeStore } = useStore();
+  const { cartItems, removeCartItem } = useStore();
 
   return (
     <Container maxWidth="sm" sx={{ mb: 4 }}>
