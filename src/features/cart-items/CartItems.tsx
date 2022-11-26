@@ -1,9 +1,9 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { CartItemsSkeleton } from "src/features/cart-items/CartItems.skeleton";
-import { useCartStore } from "src/stores/cartItems";
+import { useStore } from "src/store";
 
 export const CartItems = () => {
-  const { cartItems } = useCartStore();
+  const { cartItems } = useStore();
 
   return (
     <Container maxWidth="sm" sx={{ mb: 4 }}>

@@ -13,7 +13,7 @@ type CartStore = {
   initializeStore: (update: Object) => void;
 };
 
-export const useCartStore = create<CartStore>((set) => ({
+export const useStore = create<CartStore>((set) => ({
   cartItems: [],
   isLoading: true,
   setCartItems: (update) => {
@@ -24,7 +24,6 @@ export const useCartStore = create<CartStore>((set) => ({
   },
   initializeStore: (update) => {
     set((state) => {
-      // Checking current state and returns if there is no update
       if (JSON.stringify(state) == JSON.stringify({ ...state, ...update })) {
         return state;
       }

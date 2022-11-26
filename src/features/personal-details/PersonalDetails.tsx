@@ -1,5 +1,5 @@
 import { Container, TextField, Typography } from "@mui/material";
-import { usePersonalDetailsStore } from "src/stores/personalDetails";
+import { usePersonalDetailsStore } from "src/store/personalDetails";
 
 export const PersonalDetails = () => {
   const { updatePersonalDetails } = usePersonalDetailsStore();
