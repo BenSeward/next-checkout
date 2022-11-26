@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { fetchCartItems } from "src/features/cart-items/api/fetchCartItems";
 import { CartItems } from "src/features/cart-items/components/CartItems";
+import { CartTotals } from "src/features/cart-items/components/CartTotals";
 import { PersonalDetails } from "src/features/personal-details/PersonalDetails";
 
 export default function Home(props: any) {
@@ -14,6 +15,7 @@ export default function Home(props: any) {
 
       <main>
         <CartItems />
+        <CartTotals />
         <PersonalDetails />
       </main>
     </div>
