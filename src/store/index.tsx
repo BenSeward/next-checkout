@@ -14,7 +14,6 @@ type PersonalDetails = {
 
 type CartStore = {
   initializeStore: (update: Partial<CartStore>) => void;
-  isLoading: boolean;
   cartItems: Array<CartItem>;
   setCartItems: (items: Array<CartItem>) => void;
   personalDetails: PersonalDetails;
@@ -23,7 +22,6 @@ type CartStore = {
 
 export const useStore = create<CartStore>((set) => ({
   cartItems: [],
-  isLoading: true,
   personalDetails: {
     firstName: "",
     lastName: "",
