@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import { useStore } from "src/store";
 
-export const CartItems = () => {
+export const CartTotals = () => {
   const { cartItems } = useStore();
 
   return (
