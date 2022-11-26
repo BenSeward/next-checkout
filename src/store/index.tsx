@@ -6,16 +6,29 @@ type CartItem = {
   price: number;
 };
 
+type PersonalDetails = {
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+};
+
 type CartStore = {
+  initializeStore: (update: Partial<CartStore>) => void;
   isLoading: boolean;
   cartItems: Array<CartItem>;
   setCartItems: (items: Array<CartItem>) => void;
-  initializeStore: (update: Object) => void;
+  personalDetails: PersonalDetails;
+  updatePersonalDetails: (personalDetail: Partial<PersonalDetails>) => void;
 };
 
 export const useStore = create<CartStore>((set) => ({
   cartItems: [],
   isLoading: true,
+  personalDetails: {
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+  },
   setCartItems: (update) => {
     set((state) => ({
       isLoading: false,
@@ -30,5 +43,13 @@ export const useStore = create<CartStore>((set) => ({
 
       return { ...state, ...update };
     });
+  },
+  updatePersonalDetails: (update) => {
+    set((state) => ({
+      personalDetails: {
+        ...state.personalDetails,
+        ...update,
+      },
+    }));
   },
 }));

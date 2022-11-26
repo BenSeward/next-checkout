@@ -1,8 +1,8 @@
 import { Container, TextField, Typography } from "@mui/material";
-import { usePersonalDetailsStore } from "src/store/personalDetails";
+import { useStore } from "src/store";
 
 export const PersonalDetails = () => {
-  const { updatePersonalDetails } = usePersonalDetailsStore();
+  const { updatePersonalDetails } = useStore();
 
   return (
     <Container maxWidth="sm" sx={{ mb: 4 }}>
