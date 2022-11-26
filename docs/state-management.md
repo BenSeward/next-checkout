@@ -1,5 +1,14 @@
 # 🗃 State Management
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet luctus nibh, eget posuere neque. Integer scelerisque, urna ut dignissim pulvinar, sapien erat tristique libero, sit amet laoreet lorem mi porta odio. Morbi sit amet metus a dolor tincidunt auctor sit amet id sem. Donec tempor felis et eros convallis ultrices. Curabitur ut tincidunt ipsum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi varius arcu massa, quis vehicula ex auctor vel. Vestibulum lobortis lacus a felis ultricies accumsan. Suspendisse lectus odio, vulputate quis pellentesque a, rhoncus eu urna. Aenean tincidunt risus et varius consectetur. Curabitur sit amet mauris luctus, ultrices ipsum volutpat, viverra libero. Pellentesque placerat tempus nunc et venenatis.
+State management is split into 2 main areas. These are component state, and application state.
 
-Cras sed finibus elit, non posuere massa. Aliquam pharetra, neque malesuada sollicitudin rutrum, sapien leo lacinia orci, ac ultricies mauris purus at ipsum. Maecenas efficitur leo fermentum iaculis luctus. Suspendisse volutpat non lacus id pulvinar. Etiam in ultrices quam. Proin quis placerat neque. Ut et rhoncus neque, nec facilisis justo. Curabitur ac magna velit. Integer quis turpis aliquet, fermentum turpis vitae, congue dui.
+## Component State Management
+
+This is local state broadly scopes around one or a few components. For this it is advised to use React `useState`. State should ideally live as close as possible to where it is being used. Start by using local state. If you find it being used elsewhere, then move it into the global state.
+
+## Global State Management
+
+We use Zustand for global state management. Here are a few rules to follow when using the global store
+
+1. There is one store for everything
+2. All store items must be typed
