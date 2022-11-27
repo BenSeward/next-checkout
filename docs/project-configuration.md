@@ -23,3 +23,7 @@ Within a checkout it is likely we will have state that will want to be shared ac
 As well as this I think the developmet experience would be better, and will make future modifications more seamless.
 
 This is currently up for discussion so please raise an issue if you think there could be a better solution.
+
+## React Hook Form
+
+Lorem ipsum sit dolor amet.
