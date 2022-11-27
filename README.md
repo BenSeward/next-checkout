@@ -1,4 +1,4 @@
-# Next Checkout 🛍
+# 🛍 Next Checkout
 
 This is a simple checkout demonstrating simple architecture patterns to build a production ready checkout. Inspired by Bulletproof React.
 
