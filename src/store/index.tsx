@@ -8,7 +8,7 @@ type CartItem = {
   image: string;
 };
 
-type PersonalDetails = {
+type ShippingDetails = {
   firstName: string;
   lastName: string;
   emailAddress: string;
@@ -19,13 +19,13 @@ type CartStore = {
   cartItems: Array<CartItem>;
   setCartItems: (items: Array<CartItem>) => void;
   removeCartItem: (id: number) => void;
-  personalDetails: PersonalDetails;
-  updatePersonalDetails: (personalDetail: Partial<PersonalDetails>) => void;
+  shippingDetails: ShippingDetails;
+  updateShippingDetails: (shippingDetail: Partial<ShippingDetails>) => void;
 };
 
 export const useStore = create<CartStore>((set) => ({
   cartItems: [],
-  personalDetails: {
+  shippingDetails: {
     firstName: "",
     lastName: "",
     emailAddress: "",
@@ -49,10 +49,10 @@ export const useStore = create<CartStore>((set) => ({
       return { ...state, ...update };
     });
   },
-  updatePersonalDetails: (update) => {
+  updateShippingDetails: (update) => {
     set((state) => ({
-      personalDetails: {
-        ...state.personalDetails,
+      shippingDetails: {
+        ...state.shippingDetails,
         ...update,
       },
     }));
