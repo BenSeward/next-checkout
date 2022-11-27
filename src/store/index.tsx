@@ -5,6 +5,7 @@ type CartItem = {
   title: string;
   qty: number;
   price: number;
+  image: string;
 };
 
 type PersonalDetails = {

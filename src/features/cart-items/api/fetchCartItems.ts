@@ -8,6 +8,7 @@ export const fetchCartItems = async () => {
     price: cartItem.price,
     title: cartItem.title,
     qty: 3,
+    image: cartItem.image,
   }));
 
   return mapResponse;

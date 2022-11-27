@@ -1,4 +1,12 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Typography,
+} from "@mui/material";
 import { useStore } from "src/store";
 
 export const CartItems = () => {
@@ -10,14 +18,22 @@ export const CartItems = () => {
 
       {cartItems.map((cartItem, index) => {
         return (
-          <Box key={index}>
-            <Typography variant="h6">Title: {cartItem.title}</Typography>
-            <Typography variant="h6">Price: {cartItem.price}</Typography>
-            <Typography variant="h6">Qty: {cartItem.qty}</Typography>
-            <Button onClick={() => removeCartItem(cartItem.id)}>
-              Remove Item
-            </Button>
-          </Box>
+          <Card key={index} sx={{ display: "flex", mb: 2 }}>
+            <CardMedia
+              component="img"
+              sx={{ width: 100, objectFit: "contain" }}
+              src={cartItem.image}
+              alt={cartItem.title}
+            />
+            <CardContent>
+              <Typography variant="body1">Title: {cartItem.title}</Typography>
+              <Typography variant="body1">Price: {cartItem.price}</Typography>
+              <Typography variant="body1">Qty: {cartItem.qty}</Typography>
+              <Button onClick={() => removeCartItem(cartItem.id)}>
+                Remove Item
+              </Button>
+            </CardContent>
+          </Card>
         );
       })}
     </Container>
