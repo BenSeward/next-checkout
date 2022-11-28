@@ -8,6 +8,15 @@ export const sessionRehydration = new Promise((res) => {
   onRehydrated = res as any;
 });
 
+const storeOptions = {
+  name: "checkout-store",
+  onRehydrateStorage: () => {
+    return () => {
+      onRehydrated();
+    };
+  },
+};
+
 export const useStore = create<CartStore>()(
   persist(
     (set) => ({
@@ -46,13 +55,6 @@ export const useStore = create<CartStore>()(
         }));
       },
     }),
-    {
-      name: "checkout-store",
-      onRehydrateStorage: () => {
-        return () => {
-          onRehydrated();
-        };
-      },
-    }
+    storeOptions
   )
 );
