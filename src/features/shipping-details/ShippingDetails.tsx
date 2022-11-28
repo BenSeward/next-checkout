@@ -5,28 +5,28 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useStore } from "src/store";
 import { useForm } from "react-hook-form";
+import { onSubmit } from "src/features/shipping-details/utils/handleSubmit";
+import { useStore } from "src/store";
 
 export const ShippingDetails = () => {
-  const { updateShippingDetails } = useStore();
-  const { register, handleSubmit } = useForm();
-
-  const onSubmit = async (data: unknown) => {
-    console.log(data);
-  };
+  const { shippingDetails, updateShippingDetails } = useStore();
+  const { register, handleSubmit } = useForm({
+    defaultValues: shippingDetails,
+  });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit((data) => onSubmit(data, updateShippingDetails))}
+    >
       <Container maxWidth="sm" sx={{ mb: 4 }}>
-        <Typography variant="h6">Personal details</Typography>
+        <Typography variant="h6">Shipping Address</Typography>
         <TextField
           label="First name"
           variant="outlined"
           margin="dense"
           fullWidth
           {...register("firstName")}
-          // onChange={(e) => updateShippingDetails({ firstName: e.target.value })}
         />
         <TextField
           label="Last name"
@@ -34,7 +34,6 @@ export const ShippingDetails = () => {
           margin="dense"
           fullWidth
           {...register("lastName")}
-          // onChange={(e) => updateShippingDetails({ lastName: e.target.value })}
         />
         <TextField
           label="Email Address"
@@ -42,14 +41,9 @@ export const ShippingDetails = () => {
           margin="dense"
           fullWidth
           {...register("emailAddress")}
-          // onChange={(e) =>
-          //   updateShippingDetails({ emailAddress: e.target.value })
-          // }
         />
 
         <Divider sx={{ my: 4 }} />
-
-        <Typography variant="h6">Deliver to</Typography>
 
         <TextField
           label="Address Line One"
@@ -57,9 +51,6 @@ export const ShippingDetails = () => {
           margin="dense"
           fullWidth
           {...register("shippingAddress.addressLineOne")}
-          // onChange={(e) =>
-          //   updateShippingDetails({ emailAddress: e.target.value })
-          // }
         />
         <TextField
           label="Address Line Two"
@@ -67,9 +58,6 @@ export const ShippingDetails = () => {
           margin="dense"
           fullWidth
           {...register("shippingAddress.addressLineTwo")}
-          // onChange={(e) =>
-          //   updateShippingDetails({ emailAddress: e.target.value })
-          // }
         />
         <TextField
           label="Town / City"
@@ -77,9 +65,6 @@ export const ShippingDetails = () => {
           margin="dense"
           fullWidth
           {...register("shippingAddress.townCity")}
-          // onChange={(e) =>
-          //   updateShippingDetails({ emailAddress: e.target.value })
-          // }
         />
         <TextField
           label="Postcode"
@@ -87,9 +72,6 @@ export const ShippingDetails = () => {
           margin="dense"
           fullWidth
           {...register("shippingAddress.postCode")}
-          // onChange={(e) =>
-          //   updateShippingDetails({ emailAddress: e.target.value })
-          // }
         />
         <Input type="submit" />
       </Container>

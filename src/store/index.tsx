@@ -1,29 +1,6 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-
-type CartItem = {
-  id: number;
-  title: string;
-  qty: number;
-  price: number;
-  image: string;
-};
-
-type ShippingDetails = {
-  firstName: string;
-  lastName: string;
-  emailAddress: string;
-};
-
-type CartStore = {
-  initializeStore: (update: Partial<CartStore>) => void;
-  initialized: boolean;
-  cartItems: Array<CartItem>;
-  setCartItems: (items: Array<CartItem>) => void;
-  removeCartItem: (id: number) => void;
-  shippingDetails: ShippingDetails;
-  updateShippingDetails: (shippingDetail: Partial<ShippingDetails>) => void;
-};
+import { CartStore } from "src/store/types/types";
 
 let onRehydrated: () => void;
 
@@ -40,6 +17,12 @@ export const useStore = create<CartStore>()(
         firstName: "",
         lastName: "",
         emailAddress: "",
+        shippingAddress: {
+          addressLineOne: "",
+          addressLineTwo: "",
+          townCity: "",
+          postCode: "",
+        },
       },
       setCartItems: (update) => {
         set((state) => ({
