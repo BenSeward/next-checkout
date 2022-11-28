@@ -35,15 +35,7 @@ export const useStore = create<CartStore>()(
         }));
       },
       initializeStore: (update) => {
-        set((state) => {
-          if (
-            JSON.stringify(state) == JSON.stringify({ ...state, ...update })
-          ) {
-            return state;
-          }
-
-          return { ...state, ...update, initialized: true };
-        });
+        set((state) => ({ ...state, ...update, initialized: true }));
       },
       updateShippingDetails: (update) => {
         set((state) => ({
