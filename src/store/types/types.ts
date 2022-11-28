@@ -6,7 +6,7 @@ type CartItem = {
   image: string;
 };
 
-type ShippingDetails = {
+export type ShippingDetails = {
   firstName: string;
   lastName: string;
   emailAddress: string;

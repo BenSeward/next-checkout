@@ -1,10 +1,12 @@
 import {
+  Button,
   Container,
   Divider,
   Input,
   TextField,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { onSubmit } from "src/features/shipping-details/utils/handleSubmit";
 import { useStore } from "src/store";
@@ -14,10 +16,13 @@ export const ShippingDetails = () => {
   const { register, handleSubmit } = useForm({
     defaultValues: shippingDetails,
   });
+  const { push } = useRouter();
 
   return (
     <form
-      onSubmit={handleSubmit((data) => onSubmit(data, updateShippingDetails))}
+      onSubmit={handleSubmit((data) =>
+        onSubmit(data, updateShippingDetails, push)
+      )}
     >
       <Container maxWidth="sm" sx={{ mb: 4 }}>
         <Typography variant="h6">Shipping Address</Typography>
@@ -71,9 +76,12 @@ export const ShippingDetails = () => {
           variant="outlined"
           margin="dense"
           fullWidth
+          sx={{ mb: 2 }}
           {...register("shippingAddress.postCode")}
         />
-        <Input type="submit" />
+        <Button variant="contained" type="submit">
+          Continue to delivery methods
+        </Button>
       </Container>
     </form>
   );

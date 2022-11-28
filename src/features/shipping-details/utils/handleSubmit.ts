@@ -1,8 +1,10 @@
-import { ShippingDetails as ShippingDetailsType, useStore } from "src/store";
+import { useRouter } from "next/router";
+import { ShippingDetails } from "src/store/types/types";
 
 export const onSubmit = async (
-  data: ShippingDetailsType,
-  updateShippingDetails: any
+  data: ShippingDetails,
+  updateShippingDetails: any,
+  push: any
 ) => {
   const { firstName, lastName, emailAddress, shippingAddress } = data;
 
@@ -17,4 +19,6 @@ export const onSubmit = async (
       postCode: shippingAddress.postCode,
     },
   });
+
+  return push("/delivery-options");
 };
