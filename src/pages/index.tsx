@@ -4,7 +4,7 @@ import { CartItems } from "src/features/cart-items/components/CartItems";
 import { CartTotals } from "src/features/cart-items/components/CartTotals";
 import { ShippingDetails } from "src/features/shipping-details/ShippingDetails";
 
-export default function Home(props: any) {
+export default function Home() {
   return (
     <div>
       <Head>
