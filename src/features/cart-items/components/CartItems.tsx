@@ -10,7 +10,7 @@ import {
 import { useStore } from "src/store";
 
 export const CartItems = () => {
-  const { cartItems, removeCartItem } = useStore();
+  const { cartItems, dispatchCartItems } = useStore();
 
   return (
     <Container maxWidth="sm" sx={{ mb: 4 }}>
@@ -29,7 +29,7 @@ export const CartItems = () => {
               <Typography variant="body1">Title: {cartItem.title}</Typography>
               <Typography variant="body1">Price: {cartItem.price}</Typography>
               <Typography variant="body1">Qty: {cartItem.qty}</Typography>
-              <Button onClick={() => removeCartItem(cartItem.id)}>
+              <Button onClick={() => dispatchCartItems(cartItem, "REMOVE")}>
                 Remove Item
               </Button>
             </CardContent>

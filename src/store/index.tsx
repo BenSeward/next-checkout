@@ -1,6 +1,6 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { CartStore } from "src/store/types/types";
+// import { CartStore } from "src/store/types/types";
 
 let onRehydrated: () => void;
 
@@ -15,6 +15,22 @@ const storeOptions = {
       onRehydrated();
     };
   },
+};
+
+type DispatchTypes = {
+  update: string;
+  remove: string;
+};
+
+const types: DispatchTypes = { update: "UPDATE", remove: "REMOVE" };
+
+const dispatchCartItems = (state: any, update: any, type: any) => {
+  switch (type) {
+    case types.remove:
+      const mango = state.cartItems.filter((item: CartItem) => item.id !== update.id);
+
+      return { ...state, cartItems: mango };
+  }
 };
 
 export const useStore = create<CartStore>()(
@@ -33,16 +49,7 @@ export const useStore = create<CartStore>()(
           postCode: "",
         },
       },
-      setCartItems: (update) => {
-        set((state) => ({
-          cartItems: [...state.cartItems, ...update],
-        }));
-      },
-      removeCartItem: (id) => {
-        set((state) => ({
-          cartItems: state.cartItems.filter((item) => item.id !== id),
-        }));
-      },
+      dispatchCartItems: (update, args) => set((state) => dispatchCartItems(state, update, args)),
       initializeStore: (update) => {
         set((state) => ({ ...state, ...update, initialized: true }));
       },
