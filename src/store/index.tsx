@@ -1,6 +1,6 @@
+import { CartItem, CartStore, DispatchTypes } from "src/store/types/types";
 import create from "zustand";
 import { persist } from "zustand/middleware";
-// import { CartStore } from "src/store/types/types";
 
 let onRehydrated: () => void;
 
@@ -8,28 +8,28 @@ export const sessionRehydration = new Promise((res) => {
   onRehydrated = res as any;
 });
 
-const storeOptions = {
-  name: "checkout-store",
-  onRehydrateStorage: () => {
-    return () => {
-      onRehydrated();
-    };
-  },
-};
-
-type DispatchTypes = {
-  update: string;
-  remove: string;
-};
-
-const types: DispatchTypes = { update: "UPDATE", remove: "REMOVE" };
+const dispatchTypes: DispatchTypes = { update: "UPDATE", remove: "REMOVE" };
 
 const dispatchCartItems = (state: any, update: any, type: any) => {
   switch (type) {
-    case types.remove:
-      const mango = state.cartItems.filter((item: CartItem) => item.id !== update.id);
+    case dispatchTypes.remove:
+      const filterItems = state.cartItems.filter((item: CartItem) => item.id !== update.id);
 
-      return { ...state, cartItems: mango };
+      return { ...state, cartItems: filterItems };
+  }
+};
+
+const dispatchInitialize = (state: any, update: any, type: any) => {
+  switch (type) {
+    case dispatchTypes.update:
+      return { ...state, ...update, initialized: true };
+  }
+};
+
+const dispatchShippingDetails = (state: any, update: any, type: any) => {
+  switch (type) {
+    case dispatchTypes.update:
+      return { ...state, shippingDetails: { ...state.shippingDetails, ...update } };
   }
 };
 
@@ -50,18 +50,16 @@ export const useStore = create<CartStore>()(
         },
       },
       dispatchCartItems: (update, args) => set((state) => dispatchCartItems(state, update, args)),
-      initializeStore: (update) => {
-        set((state) => ({ ...state, ...update, initialized: true }));
-      },
-      updateShippingDetails: (update) => {
-        set((state) => ({
-          shippingDetails: {
-            ...state.shippingDetails,
-            ...update,
-          },
-        }));
-      },
+      dispatchInitialize: (update, args) => set((state) => dispatchInitialize(state, update, args)),
+      dispatchShippingDetails: (update, args) => set((state) => dispatchShippingDetails(state, update, args)),
     }),
-    storeOptions
+    {
+      name: "checkout-store",
+      onRehydrateStorage: () => {
+        return () => {
+          onRehydrated();
+        };
+      },
+    }
   )
 );
