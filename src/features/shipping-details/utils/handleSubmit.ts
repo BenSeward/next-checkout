@@ -1,10 +1,10 @@
 import { ShippingDetails } from "src/store/types/types";
 
-export const onSubmit = async (data: ShippingDetails, dispatchShippingDetails: any, push: any) => {
+export const onSubmit = async (data: ShippingDetails, updateShippingDetails: any, push: any) => {
   const { firstName, lastName, emailAddress, shippingAddress } = data;
 
-  dispatchShippingDetails(
-    {
+  updateShippingDetails({
+    update: {
       firstName,
       lastName,
       emailAddress,
@@ -15,8 +15,8 @@ export const onSubmit = async (data: ShippingDetails, dispatchShippingDetails: a
         postCode: shippingAddress.postCode,
       },
     },
-    "UPDATE"
-  );
+    type: "UPDATE",
+  });
 
   return push("/delivery-options");
 };

@@ -5,14 +5,14 @@ import { onSubmit } from "src/features/shipping-details/utils/handleSubmit";
 import { useStore } from "src/store";
 
 export const ShippingDetails = () => {
-  const { shippingDetails, dispatchShippingDetails } = useStore();
+  const { shippingDetails, updateShippingDetails } = useStore();
   const { push } = useRouter();
   const { register, handleSubmit } = useForm({
     defaultValues: shippingDetails,
   });
 
   return (
-    <form onSubmit={handleSubmit((data) => onSubmit(data, dispatchShippingDetails, push))}>
+    <form onSubmit={handleSubmit((data) => onSubmit(data, updateShippingDetails, push))}>
       <Container maxWidth="sm" sx={{ mb: 4 }}>
         <Typography variant="h6">Shipping Address</Typography>
         <TextField label="First name" variant="outlined" margin="dense" fullWidth {...register("firstName")} />

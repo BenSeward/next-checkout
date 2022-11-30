@@ -1,16 +1,8 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, CardContent, CardMedia, Container, Typography } from "@mui/material";
 import { useStore } from "src/store";
 
 export const CartItems = () => {
-  const { cartItems, dispatchCartItems } = useStore();
+  const { cartItems, updateCartItems } = useStore();
 
   return (
     <Container maxWidth="sm" sx={{ mb: 4 }}>
@@ -29,9 +21,7 @@ export const CartItems = () => {
               <Typography variant="body1">Title: {cartItem.title}</Typography>
               <Typography variant="body1">Price: {cartItem.price}</Typography>
               <Typography variant="body1">Qty: {cartItem.qty}</Typography>
-              <Button onClick={() => dispatchCartItems(cartItem, "REMOVE")}>
-                Remove Item
-              </Button>
+              <Button onClick={() => updateCartItems({ update: cartItem, type: "REMOVE" })}>Remove Item</Button>
             </CardContent>
           </Card>
         );

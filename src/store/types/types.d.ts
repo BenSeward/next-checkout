@@ -18,16 +18,31 @@ export type ShippingDetails = {
   };
 };
 
+type DispatchTypes = {
+  update: string;
+  remove: string;
+};
+
+type UpdateCartItemsProps = {
+  update: CartItem;
+  type: string;
+};
+
+type UpdateShippingParams = {
+  update: Partial<ShippingDetails>;
+  type: string;
+};
+
+type UpdateInitializeParams = {
+  update: Partial<ShippingDetails>;
+  type: string;
+};
+
 type CartStore = {
   initialized: boolean;
   cartItems: Array<CartItem>;
   shippingDetails: ShippingDetails;
-  dispatchCartItems: (update: any, args: any) => any;
+  updateCartItems: ({ update, type }: UpdateCartItemsProps) => any;
   dispatchInitialize: (update: any, args: any) => any;
-  dispatchShippingDetails: (update: any, args: any) => any;
-};
-
-type DispatchTypes = {
-  update: string;
-  remove: string;
+  updateShippingDetails: ({ update, args }: UpdateShippingParams) => void;
 };

@@ -10,10 +10,10 @@ export const sessionRehydration = new Promise((res) => {
 
 const dispatchTypes: DispatchTypes = { update: "UPDATE", remove: "REMOVE" };
 
-const dispatchCartItems = (state: any, update: any, type: any) => {
-  switch (type) {
+const dispatchCartItems = (state: any, args: any) => {
+  switch (args.type) {
     case dispatchTypes.remove:
-      const filterItems = state.cartItems.filter((item: CartItem) => item.id !== update.id);
+      const filterItems = state.cartItems.filter((item: CartItem) => item.id !== args.update.id);
 
       return { ...state, cartItems: filterItems };
   }
@@ -26,10 +26,10 @@ const dispatchInitialize = (state: any, update: any, type: any) => {
   }
 };
 
-const dispatchShippingDetails = (state: any, update: any, type: any) => {
-  switch (type) {
+const dispatchShippingDetails = (state: any, args: any) => {
+  switch (args.type) {
     case dispatchTypes.update:
-      return { ...state, shippingDetails: { ...state.shippingDetails, ...update } };
+      return { ...state, shippingDetails: { ...state.shippingDetails, ...args.update } };
   }
 };
 
@@ -49,9 +49,9 @@ export const useStore = create<CartStore>()(
           postCode: "",
         },
       },
-      dispatchCartItems: (update, args) => set((state) => dispatchCartItems(state, update, args)),
+      updateCartItems: (args) => set((state) => dispatchCartItems(state, args)),
       dispatchInitialize: (update, args) => set((state) => dispatchInitialize(state, update, args)),
-      dispatchShippingDetails: (update, args) => set((state) => dispatchShippingDetails(state, update, args)),
+      updateShippingDetails: (args) => set((state: CartStore) => dispatchShippingDetails(state, args)),
     }),
     {
       name: "checkout-store",
