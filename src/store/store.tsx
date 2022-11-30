@@ -1,4 +1,4 @@
-import { CartItem, CartStore, DispatchTypes } from "src/store/types/types";
+import { CartItem, CartStore, DispatchTypes } from "src/store/types";
 import create from "zustand";
 import { persist } from "zustand/middleware";
 

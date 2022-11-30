@@ -1,4 +1,4 @@
-import { ShippingDetails } from "src/store/types/types";
+import { ShippingDetails } from "src/store/types";
 
 export const onSubmit = async (data: ShippingDetails, updateShippingDetails: any, push: any) => {
   const { firstName, lastName, emailAddress, shippingAddress } = data;
