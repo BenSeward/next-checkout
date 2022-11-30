@@ -19,10 +19,10 @@ const dispatchCartItems = (state: any, args: any) => {
   }
 };
 
-const dispatchInitialize = (state: any, update: any, type: any) => {
-  switch (type) {
+const dispatchInitialize = (state: any, args: any) => {
+  switch (args.type) {
     case dispatchTypes.update:
-      return { ...state, ...update, initialized: true };
+      return { ...state, ...args.update, initialized: true };
   }
 };
 
@@ -50,7 +50,7 @@ export const useStore = create<CartStore>()(
         },
       },
       updateCartItems: (args) => set((state) => dispatchCartItems(state, args)),
-      dispatchInitialize: (update, args) => set((state) => dispatchInitialize(state, update, args)),
+      updateInitialize: (args) => set((state) => dispatchInitialize(state, args)),
       updateShippingDetails: (args) => set((state: CartStore) => dispatchShippingDetails(state, args)),
     }),
     {

@@ -34,7 +34,7 @@ type UpdateShippingParams = {
 };
 
 type UpdateInitializeParams = {
-  update: Partial<ShippingDetails>;
+  update: Partial<CartStore>;
   type: string;
 };
 
@@ -43,6 +43,6 @@ type CartStore = {
   cartItems: Array<CartItem>;
   shippingDetails: ShippingDetails;
   updateCartItems: ({ update, type }: UpdateCartItemsProps) => any;
-  dispatchInitialize: (update: any, args: any) => any;
   updateShippingDetails: ({ update, args }: UpdateShippingParams) => void;
+  updateInitialize: ({ update, args }: UpdateInitializeParams) => any;
 };

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { sessionRehydration, useStore } from "src/store";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { dispatchInitialize, initialized } = useStore();
+  const { updateInitialize, initialized } = useStore();
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -11,10 +11,10 @@ export default function App({ Component, pageProps }: AppProps) {
       setHydrated(true);
 
       if (!initialized) {
-        dispatchInitialize(pageProps.initializeStore, "UPDATE");
+        updateInitialize({ update: pageProps.initializeStore, type: "UPDATE" });
       }
     });
-  }, [initialized, pageProps.initializeStore, dispatchInitialize]);
+  }, [initialized, pageProps.initializeStore, updateInitialize]);
 
   if (!hydrated) {
     return null;
