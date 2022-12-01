@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <PageStepper />
+      <PageStepper activeStep={1} />
 
       <CartItems />
       <CartTotals />
