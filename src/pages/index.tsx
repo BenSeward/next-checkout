@@ -3,7 +3,7 @@ import { fetchCartItems } from "src/features/cart-items/api/fetchCartItems";
 import { CartItems } from "src/features/cart-items/components/CartItems";
 import { CartTotals } from "src/features/cart-items/components/CartTotals";
 import { PageStepper } from "src/features/page-stepper";
-import { ShippingDetails } from "src/features/shipping-details/ShippingDetails";
+import { ShippingDetails } from "src/features/shipping-details";
 
 export default function Home() {
   return (
