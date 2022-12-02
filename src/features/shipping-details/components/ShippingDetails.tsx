@@ -1,23 +1,47 @@
-import { Button, Container, Divider, Input, TextField, Typography } from "@mui/material";
+import { Button, Container, Divider, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { onSubmit } from "src/features/shipping-details/utils/handleSubmit";
+import { useShippingDetails } from "src/features/shipping-details/hooks/useShippingDetails";
 import { useStore } from "src/store";
 
 export const ShippingDetails = () => {
   const { shippingDetails, updateShippingDetails } = useStore();
+  const { updateField } = useShippingDetails();
   const { push } = useRouter();
-  const { register, handleSubmit } = useForm({
+  const { handleSubmit } = useForm({
     defaultValues: shippingDetails,
   });
 
+  const { firstName, lastName, emailAddress, shippingAddress } = shippingDetails;
+
   return (
-    <form onSubmit={handleSubmit((data) => onSubmit(data, updateShippingDetails, push))}>
+    <form onSubmit={handleSubmit((data) => console.log(data, updateShippingDetails, push))}>
       <Container maxWidth="sm" sx={{ mb: 4 }}>
         <Typography variant="h6">Shipping Address</Typography>
-        <TextField label="First name" variant="outlined" margin="dense" fullWidth {...register("firstName")} />
-        <TextField label="Last name" variant="outlined" margin="dense" fullWidth {...register("lastName")} />
-        <TextField label="Email Address" variant="outlined" margin="dense" fullWidth {...register("emailAddress")} />
+        <TextField
+          label="First name"
+          variant="outlined"
+          margin="dense"
+          fullWidth
+          value={firstName}
+          onChange={(e) => updateField({ firstName: e.target.value })}
+        />
+        <TextField
+          label="Last name"
+          variant="outlined"
+          margin="dense"
+          fullWidth
+          value={lastName}
+          onChange={(e) => updateField({ lastName: e.target.value })}
+        />
+        <TextField
+          label="Email Address"
+          variant="outlined"
+          margin="dense"
+          fullWidth
+          value={emailAddress}
+          onChange={(e) => updateField({ emailAddress: e.target.value })}
+        />
 
         <Divider sx={{ my: 4 }} />
 
@@ -26,21 +50,24 @@ export const ShippingDetails = () => {
           variant="outlined"
           margin="dense"
           fullWidth
-          {...register("shippingAddress.addressLineOne")}
+          value={shippingAddress.addressLineOne}
+          onChange={(e) => updateField({ shippingAddress: { ...shippingAddress, addressLineOne: e.target.value } })}
         />
         <TextField
           label="Address Line Two"
           variant="outlined"
           margin="dense"
           fullWidth
-          {...register("shippingAddress.addressLineTwo")}
+          value={shippingAddress.addressLineTwo}
+          onChange={(e) => updateField({ shippingAddress: { ...shippingAddress, addressLineTwo: e.target.value } })}
         />
         <TextField
           label="Town / City"
           variant="outlined"
           margin="dense"
           fullWidth
-          {...register("shippingAddress.townCity")}
+          value={shippingAddress.townCity}
+          onChange={(e) => updateField({ shippingAddress: { ...shippingAddress, townCity: e.target.value } })}
         />
         <TextField
           label="Postcode"
@@ -48,7 +75,8 @@ export const ShippingDetails = () => {
           margin="dense"
           fullWidth
           sx={{ mb: 2 }}
-          {...register("shippingAddress.postCode")}
+          value={shippingAddress.postCode}
+          onChange={(e) => updateField({ shippingAddress: { ...shippingAddress, postCode: e.target.value } })}
         />
         <Button variant="contained" type="submit">
           Continue to delivery methods
