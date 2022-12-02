@@ -38,11 +38,18 @@ type UpdateInitializeParams = {
   type: string;
 };
 
+type UpdateDeliveryOptionParams = {
+  update: string;
+  type: string;
+};
+
 type CartStore = {
   initialized: boolean;
   cartItems: Array<CartItem>;
   shippingDetails: ShippingDetails;
+  deliveryOption: string;
   updateCartItems: ({ update, type }: UpdateCartItemsProps) => any;
   updateShippingDetails: ({ update, args }: UpdateShippingParams) => void;
+  updateDeliveryOption: ({ update, args }: UpdateDeliveryOptionParams) => void;
   updateInitialize: ({ update, args }: UpdateInitializeParams) => any;
 };

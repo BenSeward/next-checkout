@@ -2,8 +2,8 @@ import Head from "next/head";
 import { fetchCartItems } from "src/features/cart-items/api/fetchCartItems";
 import { CartItems } from "src/features/cart-items/components/CartItems";
 import { CartTotals } from "src/features/cart-items/components/CartTotals";
+import { DeliveryOptions } from "src/features/delivery-options";
 import { PageStepper } from "src/features/page-stepper";
-import { ShippingDetails } from "src/features/shipping-details/ShippingDetails";
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
 
       <CartItems />
       <CartTotals />
-      <ShippingDetails />
+      <DeliveryOptions />
     </div>
   );
 }
