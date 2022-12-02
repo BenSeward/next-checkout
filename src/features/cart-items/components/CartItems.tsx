@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, CardMedia, Container, Typography } from "@mui/material";
+import { Button, Card, CardContent, CardMedia, Container, Typography } from "@mui/material";
 import { useStore } from "src/store";
 
 export const CartItems = () => {

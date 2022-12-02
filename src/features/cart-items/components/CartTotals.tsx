@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useCart } from "src/features/cart-items/hooks/useCart";
 
 export const CartTotals = () => {
