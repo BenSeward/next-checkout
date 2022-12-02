@@ -17,7 +17,7 @@ src
 |
 +-- pages             # generated next.js pages
 |
-+-- stores            # global state stores
++-- store            # global state stores
 |
 +-- test              # test utilities and mock server
 |

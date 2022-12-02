@@ -48,8 +48,8 @@ type CartStore = {
   cartItems: Array<CartItem>;
   shippingDetails: ShippingDetails;
   deliveryOption: string;
-  updateCartItems: ({ update, type }: UpdateCartItemsProps) => any;
+  updateCartItems: ({ update, type }: UpdateCartItemsProps) => void;
   updateShippingDetails: ({ update, args }: UpdateShippingParams) => void;
   updateDeliveryOption: ({ update, args }: UpdateDeliveryOptionParams) => void;
-  updateInitialize: ({ update, args }: UpdateInitializeParams) => any;
+  updateInitialize: ({ update, args }: UpdateInitializeParams) => void;
 };
