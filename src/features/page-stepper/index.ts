@@ -1,1 +1,1 @@
-export { PageStepper } from "./PageStepper";
+export { PageStepper } from "./components/PageStepper";
