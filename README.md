@@ -1,10 +1,7 @@
 # 🛍 Next Checkout
-
-This is a simple checkout demonstrating simple architecture patterns to build a production ready checkout. Inspired by Bulletproof React.
-
 ## Introduction
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet luctus nibh, eget posuere neque. Integer scelerisque, urna ut dignissim pulvinar, sapien erat tristique libero, sit amet laoreet lorem mi porta odio. Morbi sit amet metus a dolor tincidunt auctor sit amet id sem. Donec tempor felis et eros convallis ultrices.
+This is a simple checkout demonstrating simple architecture patterns to build a production ready checkout. Inspired by Bulletproof React and Hexagonal architecture.
 
 ## Table of Contents
 
